@@ -1,0 +1,4 @@
+Service Layer:
+The service layer contains business logic and acts as an intermediary between the controller and the data access layer.
+It encapsulates the application’s business logic, ensuring separation of concerns.
+Services are often annotated with @Service.

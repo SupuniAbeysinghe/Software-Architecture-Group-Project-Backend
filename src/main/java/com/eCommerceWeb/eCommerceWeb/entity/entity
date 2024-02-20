@@ -1,0 +1,8 @@
+todo: Create User, Order, Product, Wishlist, Cart, Category POJO classes
+
+User(userId, firstName, lastName, email, phone, password)
+Product(productId, productName, quantity, price, categoryId)
+Cart(userId, productId, quantity, totalProductPrice)
+Order(orderId, userId, totalQuantity, totalPrice, dateTime)
+Wishlist(userId, productId)
+Category(categoryId, categoryName)
