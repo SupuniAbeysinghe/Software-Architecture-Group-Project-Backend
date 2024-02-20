@@ -1,13 +1,13 @@
 package com.eCommerceWeb.eCommerceWeb.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="users")
 public class User {
-    @Column
+    @Id
+    @GeneratedValue
     private int id;
     @Column
     private String email;
