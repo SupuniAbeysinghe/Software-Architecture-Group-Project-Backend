@@ -1,13 +1,19 @@
 package com.eCommerceWeb.eCommerceWeb.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name="users")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
     @Column
     private String email;
