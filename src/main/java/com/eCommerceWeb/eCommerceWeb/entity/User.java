@@ -12,7 +12,7 @@ public class User {
     @Column
     private String email;
     @Column
-    private String firstName;
+        private String firstName;
     @Column
     private String lastName;
     @Column
