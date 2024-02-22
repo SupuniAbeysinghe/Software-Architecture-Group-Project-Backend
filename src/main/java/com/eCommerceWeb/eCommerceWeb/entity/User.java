@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @AllArgsConstructor
@@ -13,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Table(name="users")
 public class User {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue //(strategy = GenerationType.AUTO)
     private int id;
     @Column
     private String email;
     @Column
-        private String firstName;
+    private String firstName;
     @Column
     private String lastName;
     @Column
