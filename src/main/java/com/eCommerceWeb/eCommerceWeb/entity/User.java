@@ -32,4 +32,14 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public String toStringNew() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
 }
