@@ -1,7 +1,9 @@
 package com.eCommerceWeb.eCommerceWeb.service;
 
 import com.eCommerceWeb.eCommerceWeb.entity.Category;
+import com.eCommerceWeb.eCommerceWeb.entity.Product;
 import com.eCommerceWeb.eCommerceWeb.repository.CategoryRepository;
+import com.eCommerceWeb.eCommerceWeb.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.Optional;
 public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
     public List<Category> getAllCategory(){
         return categoryRepository.findAll();
     }
@@ -24,5 +28,8 @@ public class CategoryService {
     public Optional<Category> getCategoryById(int id){
         return categoryRepository.findById(id);
 
+    }
+    public List<Product> getProductsByCategoryName(String categoryName) {
+        return productRepository.findByCategoriesName(categoryName);
     }
 }
