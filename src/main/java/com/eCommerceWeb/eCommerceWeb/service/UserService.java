@@ -4,5 +4,5 @@ import com.eCommerceWeb.eCommerceWeb.dto.UserDTO;
 
 public interface UserService {
 
-    String addUser(UserDTO userDTO);
+    void addUser(UserDTO userDTO);
 }
