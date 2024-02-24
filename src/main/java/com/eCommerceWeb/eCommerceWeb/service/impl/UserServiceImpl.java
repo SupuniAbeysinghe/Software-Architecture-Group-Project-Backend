@@ -5,6 +5,7 @@ import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserServiceImpl implements UserService {
     @Autowired
