@@ -20,12 +20,12 @@ public class UserController {
         this.userRepository=userRepository;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/getUser")
     public User getUser(@RequestParam int id){
         return userRepository.findById(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping(path = "/save")
     public void addUser(@RequestBody UserDTO userDTO){
         userService.addUser(userDTO);
     }
