@@ -27,6 +27,6 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
 
-        return user.getFirstName()+" "+user.getLastName();
+        //return user.getFirstName()+" "+user.getLastName();
     }
 }
