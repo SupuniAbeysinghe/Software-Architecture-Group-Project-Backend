@@ -1,10 +1,13 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
 
+import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
 import com.eCommerceWeb.eCommerceWeb.dto.UserDTO;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
+import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,13 +23,19 @@ public class UserController {
         this.userRepository=userRepository;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/getUser")
     public User getUser(@RequestParam int id){
         return userRepository.findById(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping(path = "/save")
     public void addUser(@RequestBody UserDTO userDTO){
         userService.addUser(userDTO);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
+        LoginResponse loginResponse = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginResponse);
     }
 }
