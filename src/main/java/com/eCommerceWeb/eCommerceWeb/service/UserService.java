@@ -5,4 +5,6 @@ import com.eCommerceWeb.eCommerceWeb.dto.UserDTO;
 public interface UserService {
 
     void addUser(UserDTO userDTO);
+
+
 }
