@@ -1,8 +1,10 @@
 package com.eCommerceWeb.eCommerceWeb.service.impl;
 
+import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
 import com.eCommerceWeb.eCommerceWeb.dto.UserDTO;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
+import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,5 +32,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
         //return user.getFirstName()+" "+user.getLastName();
+    }
+
+    @Override
+    public LoginResponse loginUser(LoginDTO loginDTO) {
+        //todo: implement the loginUser()
+        return null;
     }
 }
