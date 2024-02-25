@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import org.aspectj.weaver.AjAttribute;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue//(strategy = GenerationType.AUTO)
     private int product_id;
     private String product_name;
     private String product_category;
@@ -20,6 +22,12 @@ public class Product {
     private String description;
     private Date createdAt;
     private String imageFileName;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
 
     public int getProduct_id() {
