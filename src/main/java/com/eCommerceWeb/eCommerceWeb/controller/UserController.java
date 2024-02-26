@@ -33,7 +33,7 @@ public class UserController {
         userService.addUser(userDTO);
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
         LoginResponse loginResponse = userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginResponse);

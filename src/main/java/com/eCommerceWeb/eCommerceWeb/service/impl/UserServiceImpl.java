@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -36,7 +38,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
-        //todo: implement the loginUser()
-        return null;
+        String msg = "";
+        User user1 = userRepository.findByEmail(loginDTO.getEmail());
+
+        if( user1 != null){
+            String password = loginDTO.getPassword();
+            String encodedPassword = user1.getPassword();
+            Boolean isPwdRight = passwordEncoder.matches(password,encodedPassword);
+
+
+            if(isPwdRight){
+                Optional<User> user = userRepository.findOneByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
+                if(user.isPresent()){
+                    return new LoginResponse("Login Success",true);
+                }else{
+                    return new LoginResponse("Login Failed",false);
+                }
+            }else{
+                return new LoginResponse("Password does not match",false);
+            }
+        }else{
+            return new LoginResponse("Email does not exist",false);
+        }
     }
 }
