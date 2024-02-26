@@ -1,5 +1,4 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
-
 import com.eCommerceWeb.eCommerceWeb.entity.Product;
 import com.eCommerceWeb.eCommerceWeb.repository.ProductRepository;
 import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
@@ -25,8 +24,9 @@ public class ProductController {
     public void addProduct(@RequestBody Product product){
         productRepository.save(product);
     }
+
     @Autowired
-    private CategoryService categoryService;
+     CategoryService categoryService;
 
     @GetMapping("/products/category/{categoryName}")
     public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String categoryName) {
