@@ -30,11 +30,17 @@ public class CategoryService {
 
     }
 
-//    public List<Product> getProductsByCategoryName(String categoryName) {
-//        return productRepository.findByCategoriesName(categoryName); // Update method name
-//    }
-     public List<Product> getProductsByCategoryName(String categoryName) {
-          return productRepository.findByCategories_Name(categoryName);
+
+     public List<Product> getProductsByCategoryName(String catKey) {
+         if(catKey.equals("")) {
+             return (List<Product>) productRepository.findAll();
+
+         }else{
+             return productRepository.findByCategories_Name(
+                     catKey
+             );
+         }
+     }
 }
 
-}
+

@@ -4,9 +4,7 @@ import com.eCommerceWeb.eCommerceWeb.repository.ProductRepository;
 import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
 import com.eCommerceWeb.eCommerceWeb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -30,8 +28,6 @@ public class ProductController {
         return productService.getAllProducts(searchKey);
     }
 
-
-
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product){
         productRepository.save(product);
@@ -42,9 +38,11 @@ public class ProductController {
     @Autowired
      CategoryService categoryService;
 
-    @GetMapping("/products/category/{categoryName}")
-    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String categoryName) {
-        List<Product> products = categoryService.getProductsByCategoryName(categoryName);
-        return ResponseEntity.ok(products);
-    }
+
+     @GetMapping("/products/category")
+     public List<Product> getProductsByCategory(
+                                               @RequestParam(defaultValue = "") String catKey){
+         return categoryService.getProductsByCategoryName(catKey);
+}
+
 }
