@@ -20,11 +20,13 @@ public class ProductController {
         return productRepository.findById(id);
     }
 
+
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product){
         productRepository.save(product);
     }
 
+//for filter products
     @Autowired
      CategoryService categoryService;
 
