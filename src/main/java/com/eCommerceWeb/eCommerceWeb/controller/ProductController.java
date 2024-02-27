@@ -2,6 +2,7 @@ package com.eCommerceWeb.eCommerceWeb.controller;
 import com.eCommerceWeb.eCommerceWeb.entity.Product;
 import com.eCommerceWeb.eCommerceWeb.repository.ProductRepository;
 import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
+import com.eCommerceWeb.eCommerceWeb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +21,24 @@ public class ProductController {
         return productRepository.findById(id);
     }
 
+//for searching products
+    @Autowired
+    ProductService productService;
+    @GetMapping("/products/search")
+    public List<Product> getAllProducts(
+                                        @RequestParam(defaultValue = "") String searchKey){
+        return productService.getAllProducts(searchKey);
+    }
+
+
+
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product){
         productRepository.save(product);
     }
 
+
+//for filter products
     @Autowired
      CategoryService categoryService;
 
