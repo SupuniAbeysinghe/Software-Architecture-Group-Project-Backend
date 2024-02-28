@@ -90,8 +90,32 @@ public class ProductController {
 
 
         return "redirect:/products";
+    }
+    @GetMapping("/edit")
+    public String showEditPage(
+            Model model,
+            @RequestParam int id
+    ){
+
+        try{
+            Product product = productRepository.findById(id);
+            model.addAttribute("product", product);
+
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setName(product.getProduct_name());
+            productDTO.setCategory(product.getProduct_category());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setDescription(product.getDescription());
+
+            model.addAttribute("ProductDTO",productDTO);
 
 
+
+        }catch (Exception ex){
+            System.out.println("Exception: " +ex.getMessage());
+            return "redirect:/product";
+        }
+        return "products/EditProduct";
     }
 
 
