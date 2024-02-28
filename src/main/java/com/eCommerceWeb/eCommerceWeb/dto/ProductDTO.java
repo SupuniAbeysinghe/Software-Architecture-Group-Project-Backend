@@ -5,11 +5,13 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Collection;
+
 public class ProductDTO {
     @NotEmpty(message = "The name is required")
     private String name;
-    @NotEmpty(message = "The brand is required")
-    private String brand;
+//    @NotEmpty(message = "The brand is required")
+//    private String brand;
     @NotEmpty(message = "The name is required")
     private String category;
 
@@ -30,13 +32,13 @@ public class ProductDTO {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+//    public String getBrand() {
+//        return brand;
+//    }
+//
+//    public void setBrand(String brand) {
+//        this.brand = brand;
+//    }
 
     public String getCategory() {
         return category;
@@ -62,11 +64,11 @@ public class ProductDTO {
         this.description = description;
     }
 
-    public MultipartFile getImageFile() {
-        return imageFile;
-    }
-
     public void setImageFile(MultipartFile imageFile) {
         this.imageFile = imageFile;
+    }
+
+    public MultipartFile getImageFile() {
+        return imageFile;
     }
 }

@@ -85,4 +85,7 @@ public class Product {
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
     }
+
+    public void setName(String name) {
+    }
 }
