@@ -1,4 +1,6 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
+import com.eCommerceWeb.eCommerceWeb.dto.ProductDTO;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 //import ch.qos.logback.core.model.Model;
@@ -8,6 +10,8 @@ import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
 import com.eCommerceWeb.eCommerceWeb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -26,6 +30,28 @@ public class ProductController {
         return "product/index";
 
     }
+
+    @GetMapping("/create")
+    public String showCreatePage(Model model){
+        ProductDTO productDTO = new ProductDTO();
+        model.addAttribute("productDTO", productDTO);
+        return "products/CreateProduct";
+    }
+
+    @PostMapping("/create")
+    public String createProduct(
+            @Valid @ModelAttribute ProductDTO productDTO,
+            BindingResult result
+    ){
+        if (productDTO.getImageFile().isEmpty()){
+            result.addError(new FieldError("productDTO","imageFile","The image file is required"));
+        }
+        if(result.hasErrors()){
+            return "products/CreateProduct";
+        }
+        return "redirect:/products";
+    }
+
 
 
     public ProductController(ProductRepository productRepository){
