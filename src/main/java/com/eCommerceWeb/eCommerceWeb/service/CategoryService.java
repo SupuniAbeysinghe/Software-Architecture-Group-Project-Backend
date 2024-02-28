@@ -15,7 +15,7 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
     public List<Category> getAllCategory(){
         return categoryRepository.findAll();
     }
@@ -29,7 +29,18 @@ public class CategoryService {
         return categoryRepository.findById(id);
 
     }
-    public List<Product> getProductsByCategoryName(String categoryName) {
-        return productRepository.findByCategoriesName(categoryName);
-    }
+
+
+     public List<Product> getProductsByCategoryName(String catKey) {
+         if(catKey.equals("")) {
+             return (List<Product>) productRepository.findAll();
+
+         }else{
+             return productRepository.findByCategories_Name(
+                     catKey
+             );
+         }
+     }
 }
+
+

@@ -12,7 +12,7 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @GeneratedValue//(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int product_id;
     private String product_name;
     private String product_category;
@@ -85,4 +85,8 @@ public class Product {
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
     }
+
+    public void setName(String name) {
+    }
+
 }
