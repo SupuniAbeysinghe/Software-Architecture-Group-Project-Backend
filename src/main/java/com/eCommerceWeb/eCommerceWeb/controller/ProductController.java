@@ -1,4 +1,5 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 //import ch.qos.logback.core.model.Model;
 import com.eCommerceWeb.eCommerceWeb.entity.Product;
@@ -20,7 +21,7 @@ public class ProductController {
 
     @GetMapping({"","/"})
     public String showProductList(Model model){
-        List<Product> products = repo.findAll();
+        List<Product> products = repo.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("products", products);
         return "product/index";
 
