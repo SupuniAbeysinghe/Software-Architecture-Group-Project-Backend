@@ -46,4 +46,20 @@ public class ProductService {
 
         return true; // Product updated successfully
     }
+
+    //delete products
+
+    public boolean deleteProduct(int productId) {
+        // Check if the product with the given ID exists
+        Product existingProduct = productRepository.findById(productId);
+        if (existingProduct == null) {
+            return false; // Product not found, cannot delete
+        }
+
+        // Delete the product
+        productRepository.delete(existingProduct);
+
+        return true; // Product deleted successfully
+    }
+
 }
