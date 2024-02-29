@@ -1,18 +1,20 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
 
 import com.eCommerceWeb.eCommerceWeb.entity.Category;
+import com.eCommerceWeb.eCommerceWeb.entity.Product;
 import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
+import com.eCommerceWeb.eCommerceWeb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/admin/products")
 public class AdminController {
     @Autowired
     CategoryService categoryService;
@@ -54,5 +56,19 @@ public class AdminController {
             return "Category not added";
         }
     }
+    //for update product details
+    @Autowired
+    private ProductService productService;
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<String> updateProduct(@PathVariable int productId, @RequestBody Product product) {
+        boolean isUpdated = productService.updateProduct(productId, product);
+        if (isUpdated) {
+            return new ResponseEntity<>("Product updated successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to update product", HttpStatus.NOT_FOUND);
+        }
+    }
 }
+
 
