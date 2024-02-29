@@ -69,6 +69,17 @@ public class AdminController {
             return new ResponseEntity<>("Failed to update product", HttpStatus.NOT_FOUND);
         }
     }
+
+    // Delete a product
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int productId) {
+        boolean isDeleted = productService.deleteProduct(productId);
+        if (isDeleted) {
+            return new ResponseEntity<>("Product deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to delete product", HttpStatus.NOT_FOUND);
+        }
+    }
 }
 
 
