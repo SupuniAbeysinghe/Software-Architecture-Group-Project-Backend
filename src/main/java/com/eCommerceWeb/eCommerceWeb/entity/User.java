@@ -25,6 +25,9 @@ public class User {
     @Column
     private String password;
 
+    public User(int id, String email, String firstName, String lastName, String address, String encode) {
+    }
+
     public String getEmail() {
         return email;
     }
@@ -41,5 +44,17 @@ public class User {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+    private ShoppingCart shoppingCart;
+
+
+        public ShoppingCart getShoppingCart() {
+            return shoppingCart;
+        }
+
+
+        public void setShoppingCart(ShoppingCart shoppingCart) {
+            this.shoppingCart = shoppingCart;
+        }
 
 }
