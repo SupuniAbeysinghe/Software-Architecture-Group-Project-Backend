@@ -2,6 +2,7 @@ package com.eCommerceWeb.eCommerceWeb.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -31,6 +33,9 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public User(int id, String email, String firstName, String lastName, String address, String encode) {
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
