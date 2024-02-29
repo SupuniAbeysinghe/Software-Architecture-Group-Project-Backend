@@ -7,6 +7,7 @@ import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.service.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -19,11 +20,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         if(cart ==  null){
              cart= new ShoppingCart();
         }
-        Set<CartItem> cartItem= cart.getCartItem();
-
-//        if(cartItem ==  null){
-//            cartItem=new MathSet<>()
-//        }
+        Set<CartItem> cartItems= cart.getCartItem();
+        CartItem cartItem=null;
+        if(cartItems ==  null){
+            cartItems=new HashSet<>();
+            if (cartItem == null){
+                cartItem=new CartItem();
+                cartItem.setProduct((product));
+                cartItem.setTotalPrice(quantity * product.getPrice());
+            }
+        }
         return null;
     }
 
