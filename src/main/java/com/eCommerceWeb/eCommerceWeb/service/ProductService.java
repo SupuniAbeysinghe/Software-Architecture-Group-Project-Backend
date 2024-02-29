@@ -24,4 +24,26 @@ public class ProductService {
             );
         }
     }
+
+    //update products
+    public boolean updateProduct(int productId, Product updatedProduct) {
+        // Check if the product with the given ID exists
+        Product existingProduct = productRepository.findById(productId);
+        if (existingProduct == null) {
+            return false; // Product not found, cannot update
+        }
+
+        // Update the fields of the existing product with the new values
+        existingProduct.setProduct_name(updatedProduct.getProduct_name());
+        existingProduct.setProduct_category(updatedProduct.getProduct_category());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setDescription(updatedProduct.getDescription());
+        existingProduct.setCreatedAt(updatedProduct.getCreatedAt());
+        existingProduct.setImageFileName(updatedProduct.getImageFileName());
+
+        // Save the updated product
+        productRepository.save(existingProduct);
+
+        return true; // Product updated successfully
+    }
 }
