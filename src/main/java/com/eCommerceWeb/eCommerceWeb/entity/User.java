@@ -44,7 +44,7 @@ public class User {
                 ", address='" + address + '\'' +
                 '}';
     }
-
+    @OneToOne(mappedBy = "user")
     private ShoppingCart shoppingCart;
 
 
