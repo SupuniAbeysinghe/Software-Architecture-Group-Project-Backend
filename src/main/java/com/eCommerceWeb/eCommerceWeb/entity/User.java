@@ -42,6 +42,10 @@ public class User implements UserDetails {
         this.lastName = lastName;
         this.address = address;
         this.password = password;
+
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -62,6 +66,16 @@ public class User implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
+    @OneToOne(mappedBy = "user")
+
+    private ShoppingCart shoppingCart;
+
+        public ShoppingCart getShoppingCart() {
+            return shoppingCart;
+        }
+        public void setShoppingCart(ShoppingCart shoppingCart) {
+            this.shoppingCart = shoppingCart;
+        }
 
     @Override
     public boolean isAccountNonLocked() {
