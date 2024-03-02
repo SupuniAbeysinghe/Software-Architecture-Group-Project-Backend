@@ -1,11 +1,9 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
 
-import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
 import com.eCommerceWeb.eCommerceWeb.dto.RegisterDTO;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.response.AuthenticationResponse;
-import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
 import com.eCommerceWeb.eCommerceWeb.service.AuthenticationService;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -38,11 +36,11 @@ public class UserController {
 //        userService.addUser(userDTO);
 //    }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
-        LoginResponse loginResponse = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginResponse);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
+//        LoginResponse loginResponse = userService.loginUser(loginDTO);
+//        return ResponseEntity.ok(loginResponse);
+//    }
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterDTO request){

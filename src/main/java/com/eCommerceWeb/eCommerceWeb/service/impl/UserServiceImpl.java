@@ -12,7 +12,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-
+    @Override
+    public LoginResponse loginUser(LoginDTO loginDTO) {
+        return null;
+    }
 
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
@@ -34,10 +37,6 @@ public class UserServiceImpl implements UserService {
 //
 //    }
 
-    @Override
-    public LoginResponse loginUser(LoginDTO loginDTO) {
-        return null;
-    }
 
 //    @Override
 //    public LoginResponse loginUser(LoginDTO loginDTO) {
