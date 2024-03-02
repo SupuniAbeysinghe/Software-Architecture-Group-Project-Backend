@@ -1,7 +1,6 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
 
 import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
-import com.eCommerceWeb.eCommerceWeb.dto.UserDTO;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
@@ -30,10 +29,10 @@ public class UserController {
         return userRepository.findById(id);
     }
 
-    @PostMapping(path = "/save")
-    public void addUser(@RequestBody UserDTO userDTO){
-        userService.addUser(userDTO);
-    }
+//    @PostMapping(path = "/save")
+//    public void addUser(@RequestBody UserDTO userDTO){
+//        userService.addUser(userDTO);
+//    }
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
