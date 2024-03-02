@@ -45,14 +45,12 @@ public class User {
                 '}';
     }
     @OneToOne(mappedBy = "user")
-    private ShoppingCart shoppingCart;
 
+    private ShoppingCart shoppingCart;
 
         public ShoppingCart getShoppingCart() {
             return shoppingCart;
         }
-
-
         public void setShoppingCart(ShoppingCart shoppingCart) {
             this.shoppingCart = shoppingCart;
         }
