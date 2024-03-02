@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
@@ -61,4 +61,9 @@ public class UserServiceImpl implements UserService {
             return new LoginResponse("Email does not exist",false);
         }
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//        return userRepository.findByEmail(email);
+//    }
 }
