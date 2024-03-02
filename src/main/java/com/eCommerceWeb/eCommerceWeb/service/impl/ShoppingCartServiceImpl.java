@@ -63,7 +63,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
                 cart.setTotalPrices(totalPrice);
                 cart.setTotalItems(totalItems);
+                cart.setUser(user);
 
+                return cartRepository.save(cart);
             }
 
         return null;
