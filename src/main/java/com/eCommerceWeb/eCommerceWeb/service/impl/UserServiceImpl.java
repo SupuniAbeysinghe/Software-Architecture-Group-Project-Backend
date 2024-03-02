@@ -1,18 +1,26 @@
 package com.eCommerceWeb.eCommerceWeb.service.impl;
 
 import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
+import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
-
-
+    public Optional<User> getUser(String username){
+        return userRepository.findByEmail(username);
+    }
+    @Override
+    public LoginResponse loginUser(LoginDTO loginDTO) {
+        return null;
+    }
 
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
@@ -34,10 +42,6 @@ public class UserServiceImpl implements UserService{
 //
 //    }
 
-    @Override
-    public LoginResponse loginUser(LoginDTO loginDTO) {
-        return null;
-    }
 
 //    @Override
 //    public LoginResponse loginUser(LoginDTO loginDTO) {
