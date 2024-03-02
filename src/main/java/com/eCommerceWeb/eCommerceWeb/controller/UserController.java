@@ -1,9 +1,12 @@
 package com.eCommerceWeb.eCommerceWeb.controller;
 
 import com.eCommerceWeb.eCommerceWeb.dto.LoginDTO;
+import com.eCommerceWeb.eCommerceWeb.dto.RegisterDTO;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
 import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
+import com.eCommerceWeb.eCommerceWeb.response.AuthenticationResponse;
 import com.eCommerceWeb.eCommerceWeb.response.LoginResponse;
+import com.eCommerceWeb.eCommerceWeb.service.AuthenticationService;
 import com.eCommerceWeb.eCommerceWeb.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     private UserRepository userRepository;
+    private AuthenticationService service;
 
     @Autowired
     public UserController(UserRepository userRepository){
@@ -38,6 +42,11 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
         LoginResponse loginResponse = userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterDTO request){
+        return ResponseEntity.ok(service.register(request));
     }
 
 

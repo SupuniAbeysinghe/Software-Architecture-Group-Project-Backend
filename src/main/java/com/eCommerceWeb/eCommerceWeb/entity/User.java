@@ -31,14 +31,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-//    public User(int id, String email, String firstName, String lastName, String address, String encode) {
-//    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -68,5 +66,14 @@ public class User implements UserDetails {
         return true;
     }
 
+    @OneToOne(mappedBy = "user")
+    private ShoppingCart shoppingCart;
 
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 }

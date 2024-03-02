@@ -7,6 +7,7 @@ import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.response.AuthenticationResponse;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import com.eCommerceWeb.eCommerceWeb.entity.User;
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     private final UserRepository repository;
-    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(@NotNull RegisterDTO request) {
@@ -29,6 +31,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
+        repository.save(user);
         var jwtToken =jwtService.generateToken(user);
 
         return AuthenticationResponse.builder()
