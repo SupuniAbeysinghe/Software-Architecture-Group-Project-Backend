@@ -2,6 +2,9 @@ package com.eCommerceWeb.eCommerceWeb.controller;
 
 import com.eCommerceWeb.eCommerceWeb.entity.Category;
 import com.eCommerceWeb.eCommerceWeb.entity.Product;
+import com.eCommerceWeb.eCommerceWeb.entity.User;
+import com.eCommerceWeb.eCommerceWeb.repository.CategoryRepository;
+import com.eCommerceWeb.eCommerceWeb.repository.UserRepository;
 import com.eCommerceWeb.eCommerceWeb.service.CategoryService;
 import com.eCommerceWeb.eCommerceWeb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,39 +26,43 @@ public class AdminController {
         return "adminHome";
     }
 
-    @GetMapping("/admin/categories")
-    public String getCat(Model model){
-        model.addAttribute("categories", categoryService.getAllCategory());
-        return "categories";
+    CategoryRepository categoryRepository;
+    @Autowired
+    public AdminController(CategoryRepository categoryRepository){
+        this.categoryRepository=categoryRepository;
+    }
+    @GetMapping("/categories")
+    public Category getCategory(@RequestParam int id){
+        return categoryRepository.findById(id);
     }
 
-    @GetMapping("/admin/categories/add")
-    public String getCatAdd(Model model){
-        model.addAttribute("category",new Category());
-        return "categoriesAdd";
+//    @GetMapping("/admin/categories/add")
+//    public String getCatAdd(Model model){
+//        model.addAttribute("category",new Category());
+//        return "categoriesAdd";
+//    }
+
+    @PostMapping("/categories/add")
+    public void addCategory(@RequestBody Category category){
+        categoryRepository.save(category);
     }
 
-    @PostMapping("/admin/categories/add")
-    public String postCatAdd(@ModelAttribute("category") Category category){
-        categoryService.addCategory(category);
-        return "redirect:/admin/categories";
-    }
-    @GetMapping("/admin/categories/delete/{id}")
-    public String deleteCat(@PathVariable int id){
-        categoryService.removeCategoryById(id);
-        return "redirect:/admin/categories";
-    }
-
-    @GetMapping("/admin/categories/update/{id}")
-    public String updateCat(@PathVariable int id, Model model){
-        Optional<Category> category = categoryService.getCategoryById(id);
-        if(category.isPresent()){
-            model.addAttribute("category",category.get());
-            return "Category added";
-        }else {
-            return "Category not added";
-        }
-    }
+//    @GetMapping("/admin/categories/delete/{id}")
+//    public String deleteCat(@PathVariable int id){
+//        categoryService.removeCategoryById(id);
+//        return "redirect:/admin/categories";
+//    }
+//
+//    @GetMapping("/admin/categories/update/{id}")
+//    public String updateCat(@PathVariable int id, Model model){
+//        Optional<Category> category = categoryService.getCategoryById(id);
+//        if(category.isPresent()){
+//            model.addAttribute("category",category.get());
+//            return "Category added";
+//        }else {
+//            return "Category not added";
+//        }
+//    }
     //for update product details
     @Autowired
     private ProductService productService;
