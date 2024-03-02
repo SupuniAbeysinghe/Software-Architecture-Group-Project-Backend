@@ -16,19 +16,19 @@ public class CategoryService {
     CategoryRepository categoryRepository;
     @Autowired
     ProductRepository productRepository;
-    public List<Category> getAllCategory(){
-        return categoryRepository.findAll();
-    }
-    public void addCategory(Category category){
-        categoryRepository.save(category);
-    }
-    public void removeCategoryById(int id){
-        categoryRepository.deleteById(id);
-    }
-    public Optional<Category> getCategoryById(int id){
-        return categoryRepository.findById(id);
-
-    }
+//    public List<Category> getAllCategory(){
+//        return categoryRepository.findAll();
+//    }
+//    public void addCategory(Category category){
+//        categoryRepository.save(category);
+//    }
+//    public void removeCategoryById(int id){
+//        categoryRepository.deleteById(id);
+//    }
+//    public Optional<Category> getCategoryById(int id){
+//        return categoryRepository.findById(id);
+//
+//    }
 
 
      public List<Product> getProductsByCategoryName(String catKey) {
