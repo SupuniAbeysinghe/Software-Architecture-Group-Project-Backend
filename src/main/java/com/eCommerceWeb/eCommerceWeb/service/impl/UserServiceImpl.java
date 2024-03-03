@@ -14,9 +14,15 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
+
+
+
+
     public Optional<User> getUser(String username){
         return userRepository.findByEmail(username);
     }
+
+
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
         return null;
