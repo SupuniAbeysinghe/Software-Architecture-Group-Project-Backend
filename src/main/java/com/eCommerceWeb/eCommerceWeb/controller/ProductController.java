@@ -28,10 +28,14 @@ public class ProductController {
         return productService.getAllProducts(searchKey);
     }
 
+
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product){
         productRepository.save(product);
     }
+
+
+
 
 
 //for filter products
