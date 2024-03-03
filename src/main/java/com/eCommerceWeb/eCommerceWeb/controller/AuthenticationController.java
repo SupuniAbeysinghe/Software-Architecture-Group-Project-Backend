@@ -2,13 +2,15 @@ package com.eCommerceWeb.eCommerceWeb.controller;
 
 import com.eCommerceWeb.eCommerceWeb.dto.AuthenticationDTO;
 import com.eCommerceWeb.eCommerceWeb.dto.RegisterDTO;
-import com.eCommerceWeb.eCommerceWeb.exception.InvalidTokenException;
 import com.eCommerceWeb.eCommerceWeb.response.AuthenticationResponse;
 import com.eCommerceWeb.eCommerceWeb.service.AuthenticationService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -27,16 +29,16 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-    @GetMapping("/confirm-email")
-    public ResponseEntity<?> confirmEmail(@RequestParam("token") String token) throws InvalidTokenException {
-        try{
-            if(service.verifyUser(token)){
-                return ResponseEntity.ok("Your email has been successfully verified.");
-            }else{
-                return  ResponseEntity.ok("Link expired or token already verified.");
-            }
-        }catch (InvalidTokenException e){
-            return ResponseEntity.ok("Link expired or token already verified.");
-        }
-    }
+//    @GetMapping("/confirm-email")
+//    public ResponseEntity<?> confirmEmail(@RequestParam("token") String token) throws InvalidTokenException {
+//        try{
+//            if(service.verifyUser(token)){
+//                return ResponseEntity.ok("Your email has been successfully verified.");
+//            }else{
+//                return  ResponseEntity.ok("Link expired or token already verified.");
+//            }
+//        }catch (InvalidTokenException e){
+//            return ResponseEntity.ok("Link expired or token already verified.");
+//        }
+//    }
 }

@@ -21,6 +21,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//
+//        http.csrf().disable();
+//        http.cors().disable();
+//        http.authorizeHttpRequests(request -> {
+//            request.requestMatchers("/api/v1/auth/**").permitAll();
+//        });
+//        http.addFilterBefore(jwsAuthFilter, UsernamePasswordAuthenticationFilter.class);
+//        return http.build();
+
         http
                 .csrf()
                 .disable()
