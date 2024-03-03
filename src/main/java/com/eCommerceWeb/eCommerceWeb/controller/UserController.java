@@ -42,10 +42,10 @@ public class UserController {
 //        return ResponseEntity.ok(loginResponse);
 //    }
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterDTO request){
-        return ResponseEntity.ok(service.register(request));
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterDTO request){
+//        return ResponseEntity.ok(service.register(request));
+//    }
 
 
 

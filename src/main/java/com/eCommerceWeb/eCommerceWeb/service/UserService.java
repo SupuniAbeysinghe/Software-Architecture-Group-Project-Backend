@@ -12,4 +12,7 @@ public interface UserService {
 
     LoginResponse loginUser(LoginDTO loginDTO);
     public Optional<User> getUser(String username);
+
+    //void sendRegistrationConfirmationEmail(final User user) throws MessagingException;
+    //boolean verifyUser(final String token) throws InvalidTokenException;
 }
