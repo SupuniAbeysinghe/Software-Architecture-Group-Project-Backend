@@ -56,17 +56,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                   cartItem.setTotalPrice(cartItem.getTotalPrice()+ quantity* product.getPrice());
                   itemRepository.save(cartItem);
                 }
-            cart.setCartItem(cartItems);
-
-                int totalItems= totalItems(cart.getCartItem());
-                double totalPrice= totalPrice(cart.getCartItem());
-
-                cart.setTotalPrices(totalPrice);
-                cart.setTotalItems(totalItems);
-
             }
+        cart.setCartItem(cartItems);
 
-        return null;
+        int totalItems= totalItems(cart.getCartItem());
+        double totalPrice= totalPrice(cart.getCartItem());
+
+        cart.setTotalPrices(totalPrice);
+        cart.setTotalItems(totalItems);
+        cart.setUser(user);
+
+        return cartRepository.save(cart);
     }
     private CartItem findCartItem(Set<CartItem> cartItems, int productId) {
         if(cartItems == null){
